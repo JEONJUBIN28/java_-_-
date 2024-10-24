@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 public class LamdaMain4 {
@@ -33,6 +35,26 @@ public class LamdaMain4 {
 			System.out.println("======================");
 			System.out.println("숫자" + num + "짝수대홀수:" + isEven(num, predicate2));
 		}
+
+		List<Integer> list = Arrays.asList(1, 5, 7, 9, 11);
+
+		int s;
+
+		s = sum(n -> n % 2 == 0, list);
+		System.out.println("짝수합:" + s);
+		
+		s = sum(n -> n % 2 != 0, list);
+		System.out.println("홀수합:" + s);
+
+	}
+
+	public static int sum(Predicate<Integer> p, List<Integer> list) {
+		int s = 0;
+		for (int n : list) {
+			if (p.test(n))
+				s += n;
+		}
+		return s;
 	}
 
 	public static boolean isEven(int num, Predicate<Integer> p) {
